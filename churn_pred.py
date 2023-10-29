@@ -16,12 +16,14 @@ features = ['previous_month_end_balance','average_monthly_balance_prevQ',
 X = data[features]
 
 y = data.churn
+y
 
 #Train the first model
 
 First_model = RandomForestRegressor(random_state=1)
 First_model.fit(X,y)
 first_pred = First_model.predict(X)
+first_pred
 
 print(f'The first predictions are{first_pred}')
 print(f'The actual first values are{y}')
@@ -45,7 +47,12 @@ print(f'The MAE is {mae_split}')
 
 # Naturally the MAE is higher as you decrease the data size
 
+pred_df = pd.DataFrame(second_pred)
 
+plt.plot(Figsize=(50,5))
+pred_df.iloc[:50].plot()
+
+val_y.iloc[:50].plot(kind='bar',color='green')
 
 
 
