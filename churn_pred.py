@@ -1,5 +1,5 @@
 import pandas as pd
-from sklearn.ensemble import RandomForestRegressor
+from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import mean_absolute_error
 from sklearn.model_selection import train_test_split
 import matplotlib.pyplot as plt
@@ -20,7 +20,7 @@ y
 
 #Train the first model
 
-First_model = RandomForestRegressor(random_state=1)
+First_model = RandomForestClassifier(random_state=1)
 First_model.fit(X,y)
 first_pred = First_model.predict(X)
 first_pred
@@ -35,7 +35,7 @@ print(f'The MAE is {mae}')
 # Split the data and see MAE again
 train_X, val_X, train_y, val_y = train_test_split(X, y, random_state = 0)
 
-First__split_model = RandomForestRegressor(random_state=1)
+First__split_model = RandomForestClassifier(random_state=1)
 First__split_model.fit(train_X,train_y)
 second_pred = First__split_model.predict(val_X)
 mae_split = mean_absolute_error(second_pred,val_y)
@@ -50,9 +50,9 @@ print(f'The MAE is {mae_split}')
 pred_df = pd.DataFrame(second_pred)
 
 plt.plot(Figsize=(50,5))
-pred_df.iloc[:50].plot()
+pred_df.iloc[:100].plot()
 
-val_y.iloc[:50].plot(kind='bar',color='green')
+val_y.iloc[:100].plot(kind='bar',color='green')
 
 
 
